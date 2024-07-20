@@ -1,1 +1,304 @@
+CREATE DATABASE Buffet;
 
+USE Buffet;
+
+-- Tabla Clientes
+CREATE TABLE Clientes (
+    idCliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- Tabla Empleados
+CREATE TABLE Empleados (
+    idEmpleado INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    posicion VARCHAR(100),
+    salario DECIMAL(10, 2) NOT NULL
+);
+
+-- Tabla Categorias
+CREATE TABLE Categorias (
+    idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla Platos
+CREATE TABLE Platos (
+    idPlato INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10, 2) NOT NULL,
+    idCategoria INT,
+    FOREIGN KEY (idCategoria) REFERENCES Categorias(idCategoria)
+);
+
+-- Tabla Pedidos
+CREATE TABLE Pedidos (
+    idPedido INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    id_cliente INT,
+    id_empleado INT,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(idCliente),
+    FOREIGN KEY (id_empleado) REFERENCES Empleados(idEmpleado)
+);
+
+-- Tabla DetallesPedido
+CREATE TABLE DetallesPedido (
+    idDetalle INT AUTO_INCREMENT PRIMARY KEY,
+    idPedido INT,
+    idPlato INT,
+    cantidad INT NOT NULL,
+    FOREIGN KEY (idPedido) REFERENCES Pedidos(idPedido),
+    FOREIGN KEY (idPlato) REFERENCES Platos(idPlato)
+);
+
+-- Tabla Proveedores
+CREATE TABLE Proveedores (
+    idProveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    direccion VARCHAR(200)
+);
+
+-- Tabla Inventarios
+CREATE TABLE Inventarios (
+    idInventario INT AUTO_INCREMENT PRIMARY KEY,
+    idPlato INT,
+    cantidad INT NOT NULL,
+    fecha_actualizacion DATE NOT NULL,
+    FOREIGN KEY (idPlato) REFERENCES Platos(idPlato)
+);
+
+-- Tabla Mesas
+CREATE TABLE Mesas (
+    idMesa INT AUTO_INCREMENT PRIMARY KEY,
+    numero_mesa INT NOT NULL,
+    capacidad INT NOT NULL,
+    ubicacion VARCHAR(100)
+);
+
+-- Tabla Reservaciones
+CREATE TABLE Reservaciones (
+    idReservacion INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente INT,
+    idMesa INT,
+    fecha_reservacion DATE NOT NULL,
+    hora_reservacion TIME NOT NULL,
+    numero_personas INT NOT NULL,
+    FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente),
+    FOREIGN KEY (idMesa) REFERENCES Mesas(idMesa)
+);
+
+-- Tabla Promociones
+CREATE TABLE Promociones (
+    idPromocion INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    descuento DECIMAL(5, 2) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL
+);
+    USE Buffet;
+
+-- Insertar datos en la tabla Clientes
+INSERT INTO Clientes (nombre, telefono, email) VALUES
+('Juan Pérez', '123456789', 'juan.perez@example.com'),
+('María Gómez', '987654321', 'maria.gomez@example.com'),
+('Luis López', '555123456', 'luis.lopez@example.com'),
+('Ana Martínez', '444987654', 'ana.martinez@example.com'),
+('Carlos García', '333678912', 'carlos.garcia@example.com'),
+('Laura Fernández', '222789345', 'laura.fernandez@example.com'),
+('Jorge Sánchez', '111890567', 'jorge.sanchez@example.com'),
+('Marta Rodríguez', '999456123', 'marta.rodriguez@example.com'),
+('Pedro Jiménez', '888345678', 'pedro.jimenez@example.com'),
+('Sofía Morales', '777234567', 'sofia.morales@example.com'),
+('Diego Torres', '666123456', 'diego.torres@example.com'),
+('Lucía Ramírez', '555678912', 'lucia.ramirez@example.com'),
+('Andrés Vargas', '444789345', 'andres.vargas@example.com'),
+('Claudia Díaz', '333890567', 'claudia.diaz@example.com'),
+('Roberto Cruz', '222456123', 'roberto.cruz@example.com');
+
+-- Insertar datos en la tabla Empleados
+INSERT INTO Empleados (nombre, telefono, posicion, salario) VALUES
+('José Gómez', '123456789', 'Cocinero', 2500.00),
+('Elena Torres', '987654321', 'Camarero', 2000.00),
+('Manuel Pérez', '555123456', 'Cajero', 1800.00),
+('Isabel Ruiz', '444987654', 'Cocinero', 2500.00),
+('Antonio Morales', '333678912', 'Camarero', 2000.00),
+('Sandra Gutiérrez', '222789345', 'Gerente', 3500.00),
+('Fernando Castillo', '111890567', 'Cocinero', 2500.00),
+('Patricia Navarro', '999456123', 'Camarero', 2000.00),
+('Ricardo Ortega', '888345678', 'Cajero', 1800.00),
+('Cristina Herrera', '777234567', 'Camarero', 2000.00),
+('Hugo Alonso', '666123456', 'Cocinero', 2500.00),
+('Carla Delgado', '555678912', 'Camarero', 2000.00),
+('Francisco Mendoza', '444789345', 'Gerente', 3500.00),
+('Silvia Castro', '333890567', 'Cocinero', 2500.00),
+('Javier Ríos', '222456123', 'Camarero', 2000.00);
+
+-- Insertar datos en la tabla Categorias
+INSERT INTO Categorias (nombre) VALUES
+('Entradas'),
+('Platos Principales'),
+('Postres'),
+('Bebidas'),
+('Ensaladas'),
+('Sopas'),
+('Pizzas'),
+('Pastas'),
+('Mariscos'),
+('Aves'),
+('Carnes'),
+('Vegetarianos'),
+('Veganos'),
+('Sin Gluten'),
+('Para Compartir');
+
+-- Insertar datos en la tabla Platos
+INSERT INTO Platos (nombre, descripcion, precio, idCategoria) VALUES
+('Ensalada César', 'Ensalada con lechuga, crutones, queso parmesano y aderezo César', 8.50, 1),
+('Sopa de Pollo', 'Sopa casera de pollo con verduras', 6.00, 2),
+('Pizza Margherita', 'Pizza con salsa de tomate, mozzarella y albahaca', 12.00, 3),
+('Pasta Carbonara', 'Pasta con salsa de huevo, queso y panceta', 10.00, 4),
+('Tarta de Queso', 'Tarta de queso con base de galleta', 5.50, 5),
+('Café Americano', 'Café negro servido caliente', 2.00, 6),
+('Filete de Res', 'Filete de res a la parrilla con guarnición', 15.00, 7),
+('Tarta de Manzana', 'Tarta de manzana casera', 6.00, 8),
+('Ensalada Caprese', 'Ensalada con tomate, mozzarella y albahaca', 7.00, 9),
+('Sopa de Tomate', 'Sopa cremosa de tomate', 5.00, 10),
+('Pizza Pepperoni', 'Pizza con salsa de tomate, mozzarella y pepperoni', 13.00, 11),
+('Pasta Alfredo', 'Pasta con salsa de crema y queso', 11.00, 12),
+('Helado de Vainilla', 'Helado de vainilla casero', 4.00, 13),
+('Té Helado', 'Té servido con hielo y limón', 3.00, 14),
+('Pollo Asado', 'Pollo asado con guarnición', 14.00, 15);
+
+-- Insertar datos en la tabla Pedidos
+INSERT INTO Pedidos (fecha, id_cliente, id_empleado) VALUES
+('2024-06-01', 1, 1),
+('2024-06-02', 2, 2),
+('2024-06-03', 3, 3),
+('2024-06-04', 4, 4),
+('2024-06-05', 5, 5),
+('2024-06-06', 6, 6),
+('2024-06-07', 7, 7),
+('2024-06-08', 8, 8),
+('2024-06-09', 9, 9),
+('2024-06-10', 10, 10),
+('2024-06-11', 11, 11),
+('2024-06-12', 12, 12),
+('2024-06-13', 13, 13),
+('2024-06-14', 14, 14),
+('2024-06-15', 15, 15);
+
+-- Insertar datos en la tabla DetallesPedido
+INSERT INTO DetallesPedido (idPedido, idPlato, cantidad) VALUES
+(1, 1, 2),
+(2, 2, 1),
+(3, 3, 3),
+(4, 4, 2),
+(5, 5, 1),
+(6, 6, 4),
+(7, 7, 2),
+(8, 8, 1),
+(9, 9, 3),
+(10, 10, 2),
+(11, 11, 1),
+(12, 12, 4),
+(13, 13, 2),
+(14, 14, 1),
+(15, 15, 3);
+
+-- Insertar datos en la tabla Proveedores
+INSERT INTO Proveedores (nombre, telefono, email, direccion) VALUES
+('Proveedor 1', '123456789', 'proveedor1@example.com', 'Calle 1, Ciudad A'),
+('Proveedor 2', '987654321', 'proveedor2@example.com', 'Calle 2, Ciudad B'),
+('Proveedor 3', '555123456', 'proveedor3@example.com', 'Calle 3, Ciudad C'),
+('Proveedor 4', '444987654', 'proveedor4@example.com', 'Calle 4, Ciudad D'),
+('Proveedor 5', '333678912', 'proveedor5@example.com', 'Calle 5, Ciudad E'),
+('Proveedor 6', '222789345', 'proveedor6@example.com', 'Calle 6, Ciudad F'),
+('Proveedor 7', '111890567', 'proveedor7@example.com', 'Calle 7, Ciudad G'),
+('Proveedor 8', '999456123', 'proveedor8@example.com', 'Calle 8, Ciudad H'),
+('Proveedor 9', '888345678', 'proveedor9@example.com', 'Calle 9, Ciudad I'),
+('Proveedor 10', '777234567', 'proveedor10@example.com', 'Calle 10, Ciudad J');
+
+-- Insertar datos en la tabla Inventarios
+INSERT INTO Inventarios (idPlato, cantidad, fecha_actualizacion) VALUES
+(1, 50, '2024-06-01'),
+(2, 30, '2024-06-02'),
+(3, 40, '2024-06-03'),
+(4, 20, '2024-06-04'),
+(5, 60, '2024-06-05'),
+(6, 70, '2024-06-06'),
+(7, 25, '2024-06-07'),
+(8, 35, '2024-06-08'),
+(9, 45, '2024-06-09'),
+(10, 55, '2024-06-10'),
+(11, 65, '2024-06-11');
+
+CREATE VIEW VistaPedidos AS
+SELECT 
+    p.idPedido, 
+    p.fecha, 
+    c.nombre AS nombre_cliente, 
+    e.nombre AS nombre_empleado
+FROM 
+    Pedidos p
+JOIN 
+    Clientes c ON p.id_cliente = c.idCliente
+JOIN 
+    Empleados e ON p.id_empleado = e.idEmpleado;
+    
+CREATE VIEW VistaReservaciones AS
+SELECT 
+    r.idReservacion, 
+    c.nombre AS nombre_cliente, 
+    m.numero_mesa, 
+    r.fecha_reservacion, 
+    r.hora_reservacion, 
+    r.numero_personas
+FROM 
+    Reservaciones r
+JOIN 
+    Clientes c ON r.idCliente = c.idCliente
+JOIN 
+    Mesas m ON r.idMesa = m.idMesa;
+    
+    SET GLOBAL log_bin_trust_function_creators = 1;
+    
+-- Crear función IngresosPorCategoria
+DELIMITER //
+
+CREATE FUNCTION IngresosPorCategoria(idCategoria INT, fechaInicio DATE, fechaFin DATE)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE total DECIMAL(10, 2) DEFAULT 0;
+    SELECT SUM(dp.cantidad * p.precio)
+    INTO total
+    FROM DetallesPedido dp
+    JOIN Platos p ON dp.idPlato = p.idPlato
+    JOIN Categorias c ON p.idCategoria = c.idCategoria
+    JOIN Pedidos ped ON dp.PedidoID = ped.idPedido
+    WHERE c.idCategoria = idCategoria
+      AND ped.fecha BETWEEN fechaInicio AND fechaFin;
+    RETURN total;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE AgregarCliente(
+    IN nombre VARCHAR(100),
+    IN telefono VARCHAR(20),
+    IN email VARCHAR(100)
+)
+BEGIN
+    INSERT INTO Clientes (nombre, telefono, email)
+    VALUES (nombre, telefono, email);
+END //
+
+DELIMITER ;
