@@ -1,0 +1,15 @@
+CREATE VIEW VistaPedidos AS
+SELECT 
+    p.idPedido, 
+    p.fecha, 
+    c.nombre AS nombre_cliente, 
+    e.nombre AS nombre_empleado
+FROM 
+    Pedidos p
+JOIN 
+    Clientes c ON p.id_cliente = c.idCliente
+JOIN 
+    Empleados e ON p.id_empleado = e.idEmpleado;
+
+En la siguiente query, creamos una tabla de listado de vista, la cual nos ayuda para simplificar consultas, mejorar la seguridad y organizar mejor los datos. 
+En este caso para nuestra base de datos de un buffet cramos esta vista para obtener detalles de todos los pedidos con información de clientes y empleados.
