@@ -3,7 +3,8 @@
 En la siguiente vista (CREATE VIEW VistaPedidos AS), creamos una tabla de listado de vista,
 la cual nos ayuda para simplificar consultas, mejorar la seguridad y organizar mejor los datos. 
 En este caso para nuestra base de datos de un buffet,
-cramos esta vista para obtener detalles de todos los pedidos con información de clientes y empleados.
+cramos esta vista para obtener detalles de todos los pedidos con información de clientes y empleados,
+asi poder tener seguimiento agil tanto del dinero que sale como  del que entra.
 
                                            
 Tambien me parecio necesario agregar otra vista(CREATE VIEW VistaReservaciones AS),
@@ -14,10 +15,12 @@ Luego de las vistas, agregue una funcion (CREATE FUNCTION IngresosPorCategoria)
 con el fin de Calcular el total de ingresos por categoría en un rango de fechas,
 Esta función calcula el total de ingresos generados por una categoría específica de platos en un rango de fechas dado,
 con el objetivo de Analizar los ingresos generados por diferentes categorías de platos en un periodo determinado.
-(Tablas Manipuladas: DetallesPedido, Platos, Categorias)
+(Tablas manipuladas: DetallesPedido, Platos, Categorias)
 
 
                                           STORED PROCEDURES
-Aqui levantamos el procedimiento "CREATE PROCEDURE AgregarCliente" ,
+Por ultimo levantamos el procedimiento "CREATE PROCEDURE AgregarCliente" ,
 Esto nos permitira agregar de manera mas facil la insercion de nuevos clientes a nuestra tabla,
-la tabla que interectuan con nuestro procedimiento en este caso es "clientes".
+Lo cual nos garantiza darnos la informacion de la cantidad de comensales que podemos recibir en el establecimiento,
+Con mayor precision, Asi garantizar una correcta organizacion.
+(Tablas manpiludas: "clientes")
