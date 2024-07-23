@@ -26,7 +26,9 @@ asi poder tener seguimiento agil tanto del dinero que sale como  del que entra.
 Tambien me parecio necesario agregar otra vista(CREATE VIEW VistaReservaciones AS),
 para obtener las reservaciones con información del cliente y de la mesa a utilizar,
 asi poder tener mas organizacion en el establecimiento.
-                                            fUNCIONES
+
+
+                                               fUNCIONES
 Luego de las vistas, agregue una funcion (CREATE FUNCTION IngresosPorCategoria) 
 con el fin de Calcular el total de ingresos por categoría en un rango de fechas,
 Esta función calcula el total de ingresos generados por una categoría específica de platos en un rango de fechas dado,
