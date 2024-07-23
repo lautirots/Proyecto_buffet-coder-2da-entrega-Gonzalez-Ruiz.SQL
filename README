@@ -1,5 +1,18 @@
                                         INSERCION DE TABLAS
-Primeramente, comparando con la entrega anterior del proyecto, añadi 5 tablas a mi base de datos
+Primeramente, comparando con la entrega anterior del proyecto, añadi 5 tablas a mi base de datos.
+(promociones, reservaciones, mesas, inventarios y proovedores)
+
+                                        INSERCION DE DATOS
+En segundo lugar añadi datos a todas mis tablas de manera masiva, como se logra esto? 
+Necesitamos poner la informacion que contengan la cantidad de valores que contenga nuestra tabla como maximo.
+por ejemplo en la tabla "clientes" mis valores son nombre, telefono e email, solo puedo poner hasta esos 3 datos,
+entre parentesis y separando cada insercion cn una coma, debajo dejo una pequeña parte del script.
+INSERT INTO Clientes (nombre, telefono, email) VALUES
+('Juan Pérez', '123456789', 'juan.perez@example.com'),
+('María Gómez', '987654321', 'maria.gomez@example.com');
+estos datos pueden ser insertados tanto de manera manual, como con paginas que te ayuden a generar datos random,
+por ejemplo mockaroo.com.
+
 
                                               VISTAS
 En la siguiente vista (CREATE VIEW VistaPedidos AS), creamos una tabla de listado de vista,
