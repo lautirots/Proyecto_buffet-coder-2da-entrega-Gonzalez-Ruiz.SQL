@@ -1,3 +1,8 @@
+--Creamos esta vista la cual nos ayuda para simplificar consultas, mejorar la seguridad y organizar mejor los datos. 
+--En este caso para nuestra base de datos de un buffet,
+--levantamos una vista para obtener detalles de todos los pedidos con información de clientes y empleados,
+--asi poder tener seguimiento agil tanto del dinero que sale como  del que entra.
+
 CREATE VIEW VistaPedidos AS
 SELECT 
     p.idPedido, 
