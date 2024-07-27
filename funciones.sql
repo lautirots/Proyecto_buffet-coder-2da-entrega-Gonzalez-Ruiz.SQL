@@ -1,4 +1,7 @@
---
+--esta funcion tiene el fin de Calcular el total de ingresos por categoría en un rango de fechas,
+--calculanfo el total de ingresos generados por una categoría específica de platos en un rango de fechas dado,
+--con el objetivo de Analizar los ingresos generados por diferentes categorías de platos en un periodo determinado.
+--(Tablas manipuladas: DetallesPedido, Platos, Categorias)
 
 DELIMITER //
 
