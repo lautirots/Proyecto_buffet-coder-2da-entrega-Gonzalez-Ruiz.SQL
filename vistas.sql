@@ -15,6 +15,10 @@ JOIN
     Clientes c ON p.id_cliente = c.idCliente
 JOIN 
     Empleados e ON p.id_empleado = e.idEmpleado;
+--Tambien me parecio necesario agregar otra vista,
+--para obtener las reservaciones con información del cliente y de la mesa a utilizar,
+--evitando asi reservar por ejemplo la misma mesa en el mismo horario,
+--de esta manera poder tener mas organizacion dentro del establecimiento.
     
 CREATE VIEW VistaReservaciones AS
 SELECT 
