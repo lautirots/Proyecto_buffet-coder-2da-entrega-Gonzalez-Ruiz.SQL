@@ -1,1 +1,206 @@
 
+"clientes"
+
+Nombre,Teléfono,Email
+Juan Pérez,123456789,juan.perez@example.com
+María Gómez,987654321,maria.gomez@example.com
+Luis López,555123456,luis.lopez@example.com
+Ana Martínez,444987654,ana.martinez@example.com
+Carlos García,333678912,carlos.garcia@example.com
+Laura Fernández,222789345,laura.fernandez@example.com
+Jorge Sánchez,111890567,jorge.sanchez@example.com
+Marta Rodríguez,999456123,marta.rodriguez@example.com
+Pedro Jiménez,888345678,pedro.jimenez@example.com
+Sofía Morales,777234567,sofia.morales@example.com
+Diego Torres,666123456,diego.torres@example.com
+Lucía Ramírez,555678912,lucia.ramirez@example.com
+Andrés Vargas,444789345,andres.vargas@example.com
+Claudia Díaz,333890567,claudia.diaz@example.com
+Roberto Cruz,222456123,roberto.cruz@example.com
+
+"empleados"
+
+Nombre,Telefono,Posicion,Salario
+José Gómez,123456789,Cocinero,2500.0
+Elena Torres,987654321,Camarero,2000.0
+Manuel Pérez,555123456,Cajero,1800.0
+Isabel Ruiz,444987654,Cocinero,2500.0
+Antonio Morales,333678912,Camarero,2000.0
+Sandra Gutiérrez,222789345,Gerente,3500.0
+Fernando Castillo,111890567,Cocinero,2500.0
+Patricia Navarro,999456123,Camarero,2000.0
+Ricardo Ortega,888345678,Cajero,1800.0
+Cristina Herrera,777234567,Camarero,2000.0
+Hugo Alonso,666123456,Cocinero,2500.0
+Carla Delgado,555678912,Camarero,2000.0
+Francisco Mendoza,444789345,Gerente,3500.0
+Silvia Castro,333890567,Cocinero,2500.0
+Javier Ríos,222456123,Camarero,2000.0
+
+"categorias"
+nombre
+Categoria
+Entradas
+Platos Principales
+Postres
+Bebidas
+Ensaladas
+Sopas
+Pizzas
+Pastas
+Mariscos
+Aves
+Carnes
+Vegetarianos
+Veganos
+Sin Gluten
+Para Compartir
+
+"platos"
+nombre, descripcion, precio, idCategoria
+Ensalada César, Ensalada con lechuga, crutones, queso parmesano y aderezo César, 8.50, 1
+Sopa de Pollo, Sopa casera de pollo con verduras, 6.00, 2
+Pizza Margherita, Pizza con salsa de tomate, mozzarella y albahaca, 12.00, 3
+Pasta Carbonara, Pasta con salsa de huevo, queso y panceta, 10.00, 4
+Tarta de Queso, Tarta de queso con base de galleta, 5.50, 5
+Café Americano, Café negro servido caliente, 2.00, 6
+Filete de Res, Filete de res a la parrilla con guarnición, 15.00, 7
+Tarta de Manzana, Tarta de manzana casera, 6.00, 8
+Ensalada Caprese, Ensalada con tomate, mozzarella y albahaca, 7.00, 9
+Sopa de Tomate, sopa cremosa de tomate, 5.00, 10
+Pizza Pepperoni, Pizza con salsa de tomate, mozzarella y pepperoni, 13.00, 11
+Pasta Alfredo, Pasta con salsa de crema y queso, 11.00, 12
+Helado de Vainilla, Helado de vainilla casero, 4.00, 13
+Té Helado, Té servido con hielo y limón, 3.00, 14
+Pollo Asado, Pollo asado con guarnición, 14.00, 15
+
+"pedidos"
+fecha, id_cliente, id_empleado
+2023-01-01, 1, 1
+2023-01-02, 2, 2
+2023-01-03, 3, 3
+2023-01-04, 4, 4
+2023-01-05, 5, 5
+2023-01-06, 6, 6
+2023-01-07, 7, 7
+2023-01-08, 8, 8
+2023-01-09, 9, 9
+2023-01-10, 10, 10
+2023-01-11, 11, 11
+2023-01-12, 12, 12
+2023-01-13, 13, 13
+2023-01-14, 14, 14
+2023-01-15, 15, 15
+
+"detallespedido"
+idPedido, idPlato, cantidad
+1, 1, 2
+2, 2, 1
+3, 3, 1
+4, 4, 3
+5, 5, 2
+6, 6, 1
+7, 7, 2
+8, 8, 1
+9, 9, 3
+10, 10, 1
+11, 11, 2
+12, 12, 1
+13, 13, 2
+14, 14, 1
+15, 15, 3
+
+"proovedores"
+nombre, telefono, email, direccion
+Proveedor 1, 123456789, proveedor1@example.com, Dirección 1,
+Proveedor 2, 987654321, proveedor2@example.com, Dirección 2,
+Proveedor 3, 555123456, proveedor3@example.com, Dirección 3
+Proveedor 4, 444987654, proveedor4@example.com, Dirección 4
+Proveedor 5, 333678912, proveedor5@example.com, Dirección 5
+Proveedor 6, 222789345, proveedor6@example.com, Dirección 6
+Proveedor 7, 111890567, proveedor7@example.com, Dirección 7
+Proveedor 8, 999456123, proveedor8@example.com, Dirección 8
+Proveedor 9, 888345678, proveedor9@example.com, Dirección 9
+Proveedor 10, 777234567, proveedor10@example.com, Dirección 10
+Proveedor 11, 666123456, proveedor11@example.com, Dirección 11
+Proveedor 12, 555678912, proveedor12@example.com, Dirección 12
+Proveedor 13, 444789345, proveedor13@example.com, Dirección 13
+Proveedor 14, 333890567, proveedor14@example.com, Dirección 14
+Proveedor 15, 222456123, proveedor15@example.com, Dirección 15
+
+"inventarios"
+idPlato, cantidad, fecha_actualizacion
+1, 50, 2023-01-01
+2, 40, 2023-01-02
+3, 30, 2023-01-03
+4, 20, 2023-01-04
+5, 25, 2023-01-05
+6, 35, 2023-01-06
+7, 45, 2023-01-07
+8, 55, 2023-01-08
+9, 65, 2023-01-09
+10, 75, 2023-01-10
+11, 85, 2023-01-11
+12, 95, 2023-01-12
+13, 105, 2023-01-13
+14, 115, 2023-01-14
+15, 125, 2023-01-15
+
+"mesas"
+numero_mesa, capacidad, ubicacion
+1, 4, Planta Baja
+2, 2, Planta Baja
+3, 6, Planta Baja
+4, 4, Planta Alta
+5, 2, Planta Alta
+6, 6, Planta Alta
+7, 4, Terraza
+8, 2, Terraza
+9, 6, Terraza
+10, 4, Privado 1
+11, 2, Privado 1
+12, 6, Privado 2
+13, 4, Privado 2'
+14, 2, Privado 3'
+15, 6, Privado 3'
+
+"reservaciones"
+idCliente, idMesa, fecha_reservacion, hora_reservacion, numero_personas
+1, 1, 2023-01-01, 18:00:00, 4
+2, 2, 2023-01-02, 19:00:00, 2
+3, 3, 2023-01-03, 20:00:00, 6
+4, 4, 2023-01-04, 18:30:00, 4
+5, 5, 2023-01-05, 19:30:00, 2
+6, 6, 2023-01-06, 20:30:00, 6
+7, 7, 2023-01-07, 18:00:00, 4
+8, 8, 2023-01-08, 19:00:00, 2
+9, 9, 2023-01-09, 20:00:00, 6
+10, 10, 2023-01-10, 18:30:00, 4
+11, 11, 2023-01-11, 19:30:00, 2
+12, 12, 2023-01-12, 20:30:00, 6
+13, 13, 2023-01-13, 18:00:00, 4
+14, 14, 2023-01-14, 19:00:00, 2
+15, 15, 2023-01-15, 20:00:00, 6
+
+"promociones"
+nombre, descripcion, descuento, fecha_inicio, fecha_fin
+Promoción 1, Descripción de la promoción 1, 10.00, 2023-01-01, 2023-01-31
+Promoción 2, Descripción de la promoción 2, 15.00, 2023-02-01, 2023-02-28
+Promoción 3, Descripción de la promoción 3, 20.00, 2023-03-01, 2023-03-31
+Promoción 4, Descripción de la promoción 4, 25.00, 2023-04-01, 2023-04-30
+Promoción 5, Descripción de la promoción 5, 30.00, 2023-05-01, 2023-05-31
+Promoción 6, Descripción de la promoción 6, 35.00, 2023-06-01, 2023-06-30
+Promoción 7, Descripción de la promoción 7, 40.00, 2023-07-01, 2023-07-31
+Promoción 8, Descripción de la promoción 8, 45.00, 2023-08-01, 2023-08-31
+Promoción 9, Descripción de la promoción 9, 50.00, 2023-09-01, 2023-09-30
+Promoción 10, Descripción de la promoción 10, 55.00, 2023-10-01, 2023-10-31
+Promoción 11, Descripción de la promoción 11, 60.00, 2023-11-01, 2023-11-30
+Promoción 12, Descripción de la promoción 12, 65.00, 2023-12-01, 2023-12-31
+Promoción 13, Descripción de la promoción 13, 70.00, 2024-01-01, 2024-01-31
+Promoción 14, Descripción de la promoción 14, 75.00, 2024-02-01, 2024-02-29
+Promoción 15, Descripción de la promoción 15, 80.00, 2024-03-01, 2024-03-31
+
+
+Conclusion: Cada inserción de datos tiene como objetivo tener un registro detallado de los clientes,
+empleados, categorías, platos, pedidos, proveedores, inventarios, mesas, reservaciones y promociones en el restaurante.
+Esto permite gestionar y consultar la información de manera eficiente para el funcionamiento del negocio.
