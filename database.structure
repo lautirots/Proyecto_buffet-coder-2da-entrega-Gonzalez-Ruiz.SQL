@@ -303,3 +303,17 @@ BEGIN
 END //
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER ActualizarInventarioDespuesDeInsertar
+AFTER INSERT ON DetallesPedido
+FOR EACH ROW
+BEGIN
+    UPDATE Inventarios
+    SET cantidad = cantidad - NEW.cantidad
+    WHERE idPlato = NEW.idPlato;
+END //
+
+DELIMITER ;
+
