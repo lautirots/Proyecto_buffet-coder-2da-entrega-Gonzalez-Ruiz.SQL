@@ -20,6 +20,7 @@ Reservaciones
 Promociones
 
 2.2 Vistas:
+vistapedidos
 
 Descripción:
 Esta vista proporciona una visión consolidada de los pedidos,
@@ -52,10 +53,10 @@ permitiendo un análisis rápido de los pedidos, los clientes involucrados y los
 2. VistaReservaciones
 
 Descripción:
-Esta vista ofrece una visión detallada de las reservaciones, incluyendo información del cliente y de la mesa reservada. Su propósito es ayudar en la organización del establecimiento, evitando conflictos como la reserva de la misma mesa en el mismo horario.
-
-Parámetros de entrada:
-- No tiene parámetros de entrada ya que es una vista.
+Esta vista ofrece una visión detallada de las reservaciones, 
+incluyendo información del cliente y de la mesa reservada.
+Su propósito es ayudar en la organización del establecimiento, 
+evitando conflictos como la reserva de la misma mesa en el mismo horario.
 
 Tablas utilizadas:
 - Reservaciones
@@ -78,9 +79,12 @@ La vista devuelve una tabla con las siguientes columnas:
 - numero_personas: Número de personas para la reservación.
 
 Uso previsto:
-Esta vista permite una gestión más eficiente de las reservaciones, facilitando la verificación de disponibilidad de mesas y evitando conflictos de reservas. Además, proporciona una visión rápida de las reservaciones programadas con todos los detalles relevantes en una sola consulta.
+Esta vista permite una gestión más eficiente de las reservaciones,
+facilitando la verificación de disponibilidad de mesas y evitando conflictos de reservas. 
+Además, proporciona una visión rápida de las reservaciones programadas con todos los detalles relevantes en una sola consulta.
 
-Estas vistas optimizan el acceso a la información relacionada con pedidos y reservaciones, mejorando la eficiencia operativa del buffet.
+Estas vistas optimizan el acceso a la información relacionada con pedidos y reservaciones,
+mejorando la eficiencia operativa del buffet.
 
 VistaPedidos
 VistaReservaciones
