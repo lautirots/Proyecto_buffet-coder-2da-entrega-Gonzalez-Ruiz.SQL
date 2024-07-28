@@ -1,1 +1,141 @@
+1-Descripción General de la Base de Datos
 
+La base de datos "Buffet" está diseñada para gestionar las operaciones de un restaurante tipo buffet.
+Incluye tablas para manejar clientes, empleados, menú, pedidos, inventario, reservaciones y promociones.
+
+2.0 Estructura de la Base de Datos
+
+2.1 Tablas Principales:
+
+Clientes
+Empleados
+Categorias
+Platos
+Pedidos
+DetallesPedido
+Proveedores
+Inventarios
+Mesas
+Reservaciones
+Promociones
+
+2.2 Vistas:
+
+VistaPedidos
+VistaReservaciones
+
+2.3 Funciones:
+
+IngresosPorCategoria
+
+2.4 Procedimientos Almacenados:
+
+AgregarCliente
+
+2.5 Triggers:
+
+ActualizarInventarioDespuesDeInsertar
+
+
+3.0 Descripción Detallada de las Tablas
+
+3.1 Clientes:
+
+Almacena información de los clientes.
+Campos: idCliente (PK), nombre, telefono, email (único).
+
+3.2 Empleados:
+
+Registra datos de los empleados del buffet.
+Campos: idEmpleado (PK), nombre, telefono, posicion, salario.
+
+3.3 Categorias:
+
+Categorías de platos ofrecidos.
+Campos: idCategoria (PK), nombre.
+
+3.4 Platos:
+
+Detalla los platos disponibles en el menú.
+Campos: idPlato (PK), nombre, descripcion, precio, idCategoria (FK).
+
+3.5 Pedidos:
+
+Registra los pedidos realizados.
+Campos: idPedido (PK), fecha, id_cliente (FK), id_empleado (FK).
+
+3.6 DetallesPedido:
+
+Detalla los platos incluidos en cada pedido.
+Campos: idDetalle (PK), idPedido (FK), idPlato (FK), cantidad.
+
+3.7 Proveedores:
+
+Información de los proveedores del buffet.
+Campos: idProveedor (PK), nombre, telefono, email (único), direccion.
+
+3.8 Inventarios:
+
+Control de inventario de los platos.
+Campos: idInventario (PK), idPlato (FK), cantidad, fecha_actualizacion.
+
+3.9 Mesas:
+
+Registro de las mesas del restaurante.
+Campos: idMesa (PK), numero_mesa, capacidad, ubicacion.
+
+3.10 Reservaciones:
+
+Gestiona las reservaciones de mesas.
+Campos: idReservacion (PK), idCliente (FK), idMesa (FK), fecha_reservacion, hora_reservacion, numero_personas.
+
+3.11 Promociones:
+
+Maneja las promociones ofrecidas por el restaurante.
+Campos: idPromocion (PK), nombre, descripcion, descuento, fecha_inicio, fecha_fin.
+
+
+4.0 Vistas
+
+4.1 VistaPedidos:
+
+Proporciona una vista consolidada de los pedidos con información del cliente y empleado.
+
+4.2 VistaReservaciones:
+
+Ofrece una vista detallada de las reservaciones incluyendo información del cliente y la mesa.
+
+
+5.0 Funciones
+
+5.1 IngresosPorCategoria:
+
+Calcula los ingresos totales por categoría de plato en un rango de fechas específico.
+
+
+Procedimientos Almacenados
+
+6.1 AgregarCliente:
+
+Facilita la inserción de nuevos clientes en la base de datos.
+
+
+7.0 Triggers
+
+7.1 ActualizarInventarioDespuesDeInsertar:
+
+Actualiza automáticamente el inventario después de insertar un nuevo detalle de pedido.
+
+
+Consideraciones de Rendimiento y Escalabilidad
+
+
+Se han establecido claves primarias y foráneas para mantener la integridad referencial.
+Se utilizan índices automáticos en las claves primarias para mejorar el rendimiento de las consultas.
+Las vistas creadas pueden ayudar a optimizar consultas complejas frecuentes.
+
+
+Seguridad
+
+
+Se ha configurado 'log_bin_trust_function_creators' como global para permitir la creación de funciones.
