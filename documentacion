@@ -144,7 +144,62 @@ permitiendo un seguimiento detallado de los ingresos por categoría de platos.
 
 
 2.4 Procedimientos Almacenados:
+Nombre del Procedimiento: AgregarCliente
 
+Descripción:
+Este procedimiento almacenado facilita la inserción de nuevos clientes en la tabla "Clientes" de la base de datos del buffet.
+Está diseñado para simplificar el proceso de registro de clientes,
+garantizando una gestión más eficiente de la información de los comensales.
+Esto ayuda a mantener un registro preciso de los clientes, 
+lo que es crucial para la organización del establecimiento y para proporcionar un mejor servicio.
+
+Parámetros de entrada:
+1. nombre (VARCHAR(100)): El nombre del cliente a agregar.
+2. telefono (VARCHAR(20)): El número de teléfono del cliente.
+3. email (VARCHAR(100)): La dirección de correo electrónico del cliente.
+
+Tablas utilizadas:
+- Clientes
+
+Lógica del procedimiento:
+1. El procedimiento toma los tres parámetros de entrada: nombre, telefono y email.
+2. Realiza una operación INSERT INTO en la tabla Clientes.
+3. Los valores de los parámetros se insertan en las columnas correspondientes de la tabla.
+
+Resultado:
+El procedimiento no devuelve ningún resultado directamente.
+Sin embargo, inserta un nuevo registro en la tabla Clientes con la información proporcionada.
+
+Uso previsto:
+Este procedimiento puede ser utilizado para:
+- Registrar nuevos clientes de manera rápida y eficiente.
+- Mantener actualizada la base de datos de clientes del buffet.
+- Facilitar la gestión de la información de los comensales.
+- Mejorar la precisión en el control de la capacidad del establecimiento.
+
+Ejemplo de uso:
+
+CALL AgregarCliente('Juan Pérez', '123-456-7890', 'juan.perez@email.com');
+
+Este ejemplo agregaría un nuevo cliente llamado Juan Pérez con su número de teléfono y dirección de correo electrónico.
+
+Consideraciones:
+- Es importante verificar que los datos ingresados sean válidos antes de llamar al procedimiento.
+- El campo email en la tabla Clientes probablemente tenga una restricción UNIQUE, 
+   por lo que se debe tener cuidado de no insertar emails duplicados.
+- Si alguno de los campos es obligatorio en la tabla Clientes y no se proporciona un valor, el procedimiento podría fallar.
+- Este procedimiento no maneja errores explícitamente,
+   por lo que cualquier error (como violación de restricciones de la base de datos) 
+    será manejado por el sistema de gestión de base de datos.
+
+Beneficios:
+1. Estandarización: Asegura que todos los nuevos clientes se agreguen de manera consistente.
+2. Eficiencia: Simplifica el proceso de inserción, reduciendo la posibilidad de errores.
+3. Mantenimiento: Centraliza la lógica de inserción, facilitando futuras modificaciones si son necesarias.
+4. Organización: Contribuye a una mejor gestión de la capacidad del buffet al mantener un registro preciso de los clientes.
+
+Este procedimiento almacenado es una herramienta valiosa para la gestión eficiente de la base de clientes del buffet, 
+contribuyendo a una mejor organización y servicio al cliente.
 
 
 2.5 Triggers:
