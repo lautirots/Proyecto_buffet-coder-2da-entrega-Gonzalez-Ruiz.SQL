@@ -90,12 +90,62 @@ VistaPedidos
 VistaReservaciones
 
 2.3 Funciones:
+Nombre de la Función: IngresosPorCategoria
+Descripción:
+Esta función calcula los ingresos totales generados por una categoría específica de platos,
+dentro de un rango de fechas determinado. 
+Es útil para analizar el rendimiento financiero de diferentes categorías de platos en el buffet durante períodos específicos.
+Parámetros de entrada:
 
-IngresosPorCategoria
+idCategoria (INT): El identificador de la categoría de platos para la cual se quieren calcular los ingresos.
+fechaInicio (DATE): La fecha de inicio del período para el cálculo.
+fechaFin (DATE): La fecha de fin del período para el cálculo.
+
+Tablas utilizadas:
+
+DetallesPedido
+Platos
+Categorias
+Pedidos
+
+Lógica del procedimiento:
+
+Se declara una variable 'total' de tipo DECIMAL(10, 2) inicializada en 0.
+Se realiza una consulta que:
+a. Suma el producto de la cantidad de cada plato por su precio.
+b. Une (JOIN) las tablas DetallesPedido, Platos, Categorias y Pedidos.
+c. Filtra los resultados por la categoría especificada y el rango de fechas.
+El resultado de la suma se almacena en la variable 'total'.
+Se retorna el valor de 'total'.
+
+Resultado:
+La función devuelve un valor DECIMAL(10, 2)
+que representa los ingresos totales de la categoría especificada dentro del rango de fechas dado.
+Uso previsto:
+Esta función puede ser utilizada para:
+
+Analizar el desempeño financiero de diferentes categorías de platos.
+Identificar las categorías más rentables en períodos específicos.
+Ayudar en la toma de decisiones sobre el menú y las promociones.
+Generar reportes de ingresos por categoría para la gestión financiera del buffet.
+
+Ejemplo de uso:
+SELECT IngresosPorCategoria(1, '2024-01-01', '2024-12-31') AS Ingresos_Categoria_1_2024;
+
+Este ejemplo calcularía los ingresos totales de la categoría con ID 1 para todo el año 2024.
+Consideraciones:
+
+La función asume que los precios de los platos no cambian durante el período especificado.
+Si no hay pedidos que cumplan con los criterios, la función devolverá 0.
+Es importante asegurarse de que las fechas proporcionadas sean válidas y que el idCategoria exista en la tabla Categorias.
+
+Esta función proporciona una herramienta valiosa para el análisis financiero y la toma de decisiones en la gestión del buffet,
+permitiendo un seguimiento detallado de los ingresos por categoría de platos.
+
 
 2.4 Procedimientos Almacenados:
 
-AgregarCliente
+
 
 2.5 Triggers:
 
