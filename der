@@ -1,0 +1,50 @@
++------------------+       +-----------------------+       +------------------+
+|      CLIENTE     |       |       PEDIDO          |       |   DETALLE_PEDIDO |
++------------------+       +-----------------------+       +------------------+
+| idCliente (PK)   |<>-----| idPedido (PK)         |-------| idDetalle (PK)   |
+| nombre           | 1 a * | fecha                 | 1 a * | idPedido (fk)    |
+| telefono         |       | id_cliente (fk)       |       | idPlato (fk)     | 
+| email            |       | id_empleado (fk)      |       | cantidad         |
++------------------+       +-----------------------+       +------------------+
+                                                                    
++------------------+       +------------------+       +-------------------+
+|     EMPLEADO     |       |    CATEGORIAS    |       |     PLATOS        |
++------------------+       +------------------+       +-------------------+
+| idEmpleado (PK)  |       | idCategoria (PK) |-------| idPlato (PK)      |
+| nombre           | 1 a * | nombre           | 1 a * | nombre            |
+| telefono         |<>-----|                  |       | descripcion       |
+| posicion         |       |                  |       | precio            |
+| salario          |       +------------------+       | idCategoria (fk)  |
++------------------+                                 +-------------------+
+
++-----------------------+       +------------------+
+|      INVENTARIOS      |       |    PROVEEDORES   |
++-----------------------+       +------------------+
+| idInventario (PK)     |       | idProveedor (PK) |
+| idPlato (fk)          |-------| nombre           |
+| cantidad              | 1 a 1 | telefono         |
+| fecha_actualizacion   |       | email            |
++-----------------------+       | direccion        |
+                                +------------------+
+
++------------------+       +-----------------------+
+|       MESAS      |       |    RESERVACIONES      |
++------------------+       +-----------------------+
+| idMesa (PK)      |       | idReservacion (PK)    |
+| numero_mesa      | 1 a * | idCliente (fk)        |
+| capacidad        |<>-----| idMesa (fk)           |
+| ubicacion        |       | fecha_reservacion     |
++------------------+       | hora_reservacion      |
+                           | numero_personas       |
+                           +-----------------------+
+
++-----------------------+  
+|    PROMOCIONES        |  
++-----------------------+  
+| idPromocion (PK)      |  
+| nombre                |  
+| descripcion           |  
+| descuento             |  
+| fecha_inicio          |  
+| fecha_fin             |  
++-----------------------+
