@@ -204,7 +204,60 @@ contribuyendo a una mejor organización y servicio al cliente.
 
 2.5 Triggers:
 
-ActualizarInventarioDespuesDeInsertar
+Nombre del Trigger: ActualizarInventarioDespuesDeInsertar
+
+Descripción:
+Este trigger se activa automáticamente después de insertar un nuevo registro en la tabla DetallesPedido.
+Su función principal es actualizar el inventario de platos,
+reduciendo la cantidad disponible en la tabla Inventarios basándose en la cantidad de platos pedidos.
+Esto asegura que el inventario se mantenga actualizado en tiempo real con cada nuevo pedido.
+
+Tablas utilizadas:
+- DetallesPedido (tabla de activación)
+- Inventarios (tabla actualizada)
+
+Lógica del procedimiento:
+1. El trigger se activa AFTER INSERT, es decir, después de que se inserta un nuevo registro en DetallesPedido.
+2. Para cada fila insertada (FOR EACH ROW):
+   a. Se actualiza la tabla Inventarios.
+   b. Se reduce la cantidad en inventario del plato correspondiente.
+   c. La reducción es igual a la cantidad del plato en el nuevo pedido (NEW.cantidad).
+   d. Se identifica el plato correcto usando NEW.idPlato.
+
+Resultado:
+El trigger no devuelve ningún resultado directamente.
+Sin embargo, actualiza la tabla Inventarios, reduciendo la cantidad del plato correspondiente.
+
+Uso previsto:
+Este trigger se utiliza para:
+- Mantener actualizado automáticamente el inventario de platos.
+- Evitar descuadres entre los pedidos realizados y el inventario disponible.
+- Facilitar el control de stock en tiempo real.
+- Prevenir la venta de platos que ya no están disponibles.
+
+Ejemplo de funcionamiento:
+Supongamos que se inserta un nuevo registro en DetallesPedido:
+
+INSERT INTO DetallesPedido (idPedido, idPlato, cantidad) VALUES (1, 5, 2);
+
+El trigger se activará automáticamente y reducirá la cantidad del plato con idPlato = 5 en la tabla Inventarios en 2 unidades.
+
+Consideraciones:
+- Es crucial que exista un registro correspondiente en la tabla Inventarios para cada plato en DetallesPedido.
+- Si la cantidad en inventario llega a cero o valores negativos, podría ser necesario implementar lógica adicional para manejar estas situaciones.
+- Este trigger no verifica si hay suficiente inventario antes de la actualización.
+   Podría ser necesario implementar controles adicionales para prevenir inventarios negativos.
+- Un alto volumen de inserciones en DetallesPedido podría afectar el rendimiento debido a las actualizaciones constantes en Inventarios.
+
+Beneficios:
+1. Automatización: Elimina la necesidad de actualizar manualmente el inventario después de cada pedido.
+2. Precisión: Reduce errores humanos en la gestión del inventario.
+3. Tiempo real: Proporciona una visión actualizada del inventario en todo momento.
+4. Eficiencia: Mejora la gestión de recursos y la planificación de compras.
+
+Este trigger es una herramienta esencial para mantener la integridad entre los pedidos realizados y el inventario disponible
+en el buffet, contribuyendo significativamente a una gestión más eficiente y precisa del negocio.
+
 
 
 3.0 Descripción Detallada de las Tablas
@@ -264,45 +317,6 @@ Campos: idReservacion (PK), idCliente (FK), idMesa (FK), fecha_reservacion, hora
 Maneja las promociones ofrecidas por el restaurante.
 Campos: idPromocion (PK), nombre, descripcion, descuento, fecha_inicio, fecha_fin.
 
-
-4.0 Vistas
-
-4.1 VistaPedidos:
-
-Proporciona una vista consolidada de los pedidos con información del cliente y empleado.
-
-4.2 VistaReservaciones:
-
-Ofrece una vista detallada de las reservaciones incluyendo información del cliente y la mesa.
-
-
-5.0 Funciones
-
-5.1 IngresosPorCategoria:
-
-Calcula los ingresos totales por categoría de plato en un rango de fechas específico.
-
-
-Procedimientos Almacenados
-
-6.1 AgregarCliente:
-
-Facilita la inserción de nuevos clientes en la base de datos.
-
-
-7.0 Triggers
-
-7.1 ActualizarInventarioDespuesDeInsertar:
-
-Actualiza automáticamente el inventario después de insertar un nuevo detalle de pedido.
-
-
-Consideraciones de Rendimiento y Escalabilidad
-
-
-Se han establecido claves primarias y foráneas para mantener la integridad referencial.
-Se utilizan índices automáticos en las claves primarias para mejorar el rendimiento de las consultas.
-Las vistas creadas pueden ayudar a optimizar consultas complejas frecuentes.
 
 
 Seguridad
