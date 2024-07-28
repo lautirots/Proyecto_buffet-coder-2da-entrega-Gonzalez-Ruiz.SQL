@@ -21,6 +21,67 @@ Promociones
 
 2.2 Vistas:
 
+Descripción:
+Esta vista proporciona una visión consolidada de los pedidos,
+incluyendo información del cliente y del empleado que atendió el pedido.
+Está diseñada para simplificar consultas, 
+mejorar la seguridad y organizar mejor los datos relacionados con los pedidos en el buffet.
+
+Tablas utilizadas:
+- Pedidos
+- Clientes
+- Empleados
+
+Lógica del procedimiento:
+1. Se seleccionan los campos idPedido y fecha de la tabla Pedidos.
+2. Se une (JOIN) la tabla Clientes con Pedidos usando el id_cliente.
+3. Se une (JOIN) la tabla Empleados con Pedidos usando el id_empleado.
+4. Se selecciona el nombre del cliente y del empleado de sus respectivas tablas.
+
+Resultado:
+La vista devuelve una tabla con las siguientes columnas:
+- idPedido: Identificador único del pedido.
+- fecha: Fecha en que se realizó el pedido.
+- nombre_cliente: Nombre del cliente que realizó el pedido.
+- nombre_empleado: Nombre del empleado que atendió el pedido.
+
+Uso previsto:
+Esta vista facilita el seguimiento ágil tanto del dinero que sale como del que entra, 
+permitiendo un análisis rápido de los pedidos, los clientes involucrados y los empleados que los atendieron.
+
+2. VistaReservaciones
+
+Descripción:
+Esta vista ofrece una visión detallada de las reservaciones, incluyendo información del cliente y de la mesa reservada. Su propósito es ayudar en la organización del establecimiento, evitando conflictos como la reserva de la misma mesa en el mismo horario.
+
+Parámetros de entrada:
+- No tiene parámetros de entrada ya que es una vista.
+
+Tablas utilizadas:
+- Reservaciones
+- Clientes
+- Mesas
+
+Lógica del procedimiento:
+1. Se selecciona el idReservacion, fecha_reservacion, hora_reservacion y numero_personas de la tabla Reservaciones.
+2. Se une (JOIN) la tabla Clientes con Reservaciones usando el idCliente.
+3. Se une (JOIN) la tabla Mesas con Reservaciones usando el idMesa.
+4. Se selecciona el nombre del cliente de la tabla Clientes y el numero_mesa de la tabla Mesas.
+
+Resultado:
+La vista devuelve una tabla con las siguientes columnas:
+- idReservacion: Identificador único de la reservación.
+- nombre_cliente: Nombre del cliente que hizo la reservación.
+- numero_mesa: Número de la mesa reservada.
+- fecha_reservacion: Fecha de la reservación.
+- hora_reservacion: Hora de la reservación.
+- numero_personas: Número de personas para la reservación.
+
+Uso previsto:
+Esta vista permite una gestión más eficiente de las reservaciones, facilitando la verificación de disponibilidad de mesas y evitando conflictos de reservas. Además, proporciona una visión rápida de las reservaciones programadas con todos los detalles relevantes en una sola consulta.
+
+Estas vistas optimizan el acceso a la información relacionada con pedidos y reservaciones, mejorando la eficiencia operativa del buffet.
+
 VistaPedidos
 VistaReservaciones
 
