@@ -428,4 +428,42 @@ INSERT INTO Clientes_Fidelizacion (idCliente, puntos_acumulados, nivel, fecha_ul
 (14, 260, 'Oro', '2023-06-26'),
 (15, 90, 'Bronce', '2023-07-07');
 
+CREATE VIEW Vista_Platos_Ingredientes AS
+SELECT 
+    p.nombre AS Plato,
+    i.nombre AS Ingrediente,
+    pi.cantidad_necesaria AS Cantidad_Necesaria,
+    i.unidad_medida AS Unidad
+FROM 
+    Platos p
+JOIN 
+    Plato_Ingredientes pi ON p.idPlato = pi.idPlato
+JOIN 
+    Ingredientes i ON pi.idIngrediente = i.idIngrediente;
+
+CREATE VIEW Vista_Recetas_Detalladas AS
+SELECT 
+    p.nombre AS Plato,
+    r.pasos AS Pasos,
+    r.tiempo_preparacion AS Tiempo_Preparacion,
+    r.dificultad AS Dificultad
+FROM 
+    Recetas r
+JOIN 
+    Platos p ON r.idPlato = p.idPlato;
+    
+CREATE VIEW Vista_Platos_Categorias AS
+SELECT 
+    c.nombre AS Categoria,
+    p.nombre AS Nombre_Plato,
+    p.descripcion AS Descripcion_Plato,
+    p.precio AS Precio_Plato
+FROM 
+    Platos p
+JOIN 
+    Categorias c ON p.idCategoria = c.idCategoria
+ORDER BY 
+    c.nombre, p.nombre;
+
+
 
