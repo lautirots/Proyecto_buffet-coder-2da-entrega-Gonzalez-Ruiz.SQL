@@ -87,6 +87,64 @@ Esta vista permite una gestión más eficiente de las reservaciones,
 facilitando la verificación de disponibilidad de mesas y evitando conflictos de reservas. 
 Además, proporciona una visión rápida de las reservaciones programadas con todos los detalles relevantes en una sola consulta.
 
+Vista: Vista_Platos_Ingredientes
+Descripción:
+La vista Vista_Platos_Ingredientes permite visualizar la relación entre los platos y sus ingredientes. Incluye el nombre del plato, el nombre del ingrediente, la cantidad necesaria de cada ingrediente para el plato específico, y la unidad de medida en la que se expresa esa cantidad.
+
+Campos:
+Plato: Nombre del plato (proveniente de la tabla Platos).
+Ingrediente: Nombre del ingrediente utilizado en el plato (proveniente de la tabla Ingredientes).
+Cantidad_Necesaria: Cantidad del ingrediente necesaria para preparar el plato (proveniente de la tabla Plato_Ingredientes).
+Unidad: Unidad de medida en la que se expresa la cantidad del ingrediente (proveniente de la tabla Ingredientes).
+Tablas Relacionadas:
+Platos: Tabla que contiene la información sobre los diferentes platos ofrecidos.
+Plato_Ingredientes: Tabla que relaciona los platos con sus ingredientes, incluyendo la cantidad necesaria de cada ingrediente.
+Ingredientes: Tabla que contiene la información de todos los ingredientes disponibles, incluyendo sus nombres y unidades de medida.
+Objetivo/Beneficio:
+Esta vista es útil para chefs y personal de cocina que necesitan una lista detallada de los ingredientes requeridos para preparar cada plato, junto con las cantidades exactas y las unidades de medida. Ayuda a gestionar la preparación de los platos y a asegurar que todos los ingredientes necesarios están disponibles en la cantidad correcta.
+
+Vista: Vista_Recetas_Detalladas
+Descripción:
+La vista Vista_Recetas_Detalladas proporciona una descripción detallada de las recetas de los platos disponibles.
+Incluye el nombre del plato, los pasos para su preparación, 
+el tiempo estimado de preparación y el nivel de dificultad de la receta.
+
+Campos:
+Plato: Nombre del plato (proveniente de la tabla Platos).
+Pasos: Descripción detallada de los pasos necesarios para preparar el plato (proveniente de la tabla Recetas).
+Tiempo_Preparacion: Tiempo estimado para preparar el plato (proveniente de la tabla Recetas).
+Dificultad: Nivel de dificultad de la receta,
+que puede ser útil para asignar tareas según la experiencia del cocinero (proveniente de la tabla Recetas).
+Tablas Relacionadas:
+Platos: Tabla que contiene la información sobre los diferentes platos.
+Recetas: Tabla que describe las recetas asociadas a cada plato, incluyendo los pasos de preparación,
+el tiempo necesario y la dificultad.
+Objetivo/Beneficio:
+Esta vista es esencial para los cocineros y el personal de cocina,
+ya que proporciona un acceso rápido a las recetas detalladas de cada plato.
+Facilita la preparación adecuada y eficiente de los platos,
+asegurando que se sigan los pasos correctos y se respeten los tiempos de cocción.
+
+Vista: Vista_Platos_Categorias
+Descripción:
+La vista Vista_Platos_Categorias muestra una lista de platos junto con su categoría correspondiente.
+Además, incluye una breve descripción y el precio de cada plato.
+
+Campos:
+Categoria: Nombre de la categoría a la que pertenece el plato (proveniente de la tabla Categorias).
+Nombre_Plato: Nombre del plato (proveniente de la tabla Platos).
+Descripcion_Plato: Descripción del plato, que puede incluir detalles sobre su preparación,
+ingredientes principales, o estilo culinario (proveniente de la tabla Platos).
+Precio_Plato: Precio del plato, útil para la gestión de ventas y el diseño del menú (proveniente de la tabla Platos).
+Tablas Relacionadas:
+Platos: Tabla que contiene la información sobre los diferentes platos.
+Categorias: Tabla que organiza los platos en diferentes categorías, como "Entradas", "Platos Principales", etc.
+Objetivo/Beneficio:
+Esta vista es ideal para la gestión del menú y la categorización de los platos en un restaurante.
+Facilita la visualización de los platos según sus categorías, 
+lo que es útil para los camareros y el personal encargado de presentar y vender los platos a los clientes. 
+También es beneficioso para el diseño y la actualización de menús,
+al proporcionar una visión clara de los platos disponibles y sus precios.
 Estas vistas optimizan el acceso a la información relacionada con pedidos y reservaciones,
 mejorando la eficiencia operativa del buffet.
 
