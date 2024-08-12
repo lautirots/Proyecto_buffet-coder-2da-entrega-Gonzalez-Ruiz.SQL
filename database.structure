@@ -317,3 +317,115 @@ END //
 
 DELIMITER ;
 
+-- Crear la tabla INGREDIENTES
+CREATE TABLE Ingredientes (
+    idIngrediente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    cantidad_disponible DECIMAL(10, 2),
+    unidad_medida VARCHAR(50)
+);
+
+-- Crear la tabla PLATO_INGREDIENTES
+CREATE TABLE Plato_Ingredientes (
+    idPlatoIngrediente INT PRIMARY KEY AUTO_INCREMENT,
+    idPlato INT,
+    idIngrediente INT,
+    cantidad_necesaria DECIMAL(10, 2),
+    FOREIGN KEY (idPlato) REFERENCES Platos(idPlato),
+    FOREIGN KEY (idIngrediente) REFERENCES Ingredientes(idIngrediente)
+);
+
+-- Crear la tabla RECETAS
+CREATE TABLE Recetas (
+    idReceta INT PRIMARY KEY AUTO_INCREMENT,
+    idPlato INT,
+    pasos TEXT NOT NULL,
+    tiempo_preparacion INT,
+    dificultad ENUM('Fácil', 'Media', 'Difícil'),
+    FOREIGN KEY (idPlato) REFERENCES Platos(idPlato)
+);
+
+-- Crear la tabla CLIENTES_FIDELIZACION
+CREATE TABLE Clientes_Fidelizacion (
+    idFidelizacion INT PRIMARY KEY AUTO_INCREMENT,
+    idCliente INT,
+    puntos_acumulados INT DEFAULT 0,
+    nivel ENUM('Bronce', 'Plata', 'Oro', 'Platino'),
+    fecha_ultima_visita DATE,
+    FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente)
+);
+
+-- Insertar datos en la tabla INGREDIENTES
+INSERT INTO Ingredientes (nombre, descripcion, cantidad_disponible, unidad_medida) VALUES
+('Harina', 'Harina de trigo refinada', 100.00, 'kg'),
+('Azúcar', 'Azúcar blanco granulada', 50.00, 'kg'),
+('Leche', 'Leche entera pasteurizada', 200.00, 'litros'),
+('Huevos', 'Huevos frescos de gallina', 500.00, 'unidades'),
+('Mantequilla', 'Mantequilla sin sal', 25.00, 'kg'),
+('Sal', 'Sal marina refinada', 30.00, 'kg'),
+('Tomate', 'Tomates frescos', 150.00, 'kg'),
+('Queso', 'Queso mozzarella', 60.00, 'kg'),
+('Pasta', 'Pasta tipo espagueti', 80.00, 'kg'),
+('Pollo', 'Pechugas de pollo', 40.00, 'kg'),
+('Carne de Res', 'Carne de res para asar', 70.00, 'kg'),
+('Arroz', 'Arroz blanco de grano largo', 100.00, 'kg'),
+('Aceite de Oliva', 'Aceite de oliva virgen extra', 50.00, 'litros'),
+('Cebolla', 'Cebollas frescas', 60.00, 'kg'),
+('Ajo', 'Ajos frescos', 20.00, 'kg');
+
+-- Insertar datos en la tabla PLATO_INGREDIENTES
+INSERT INTO Plato_Ingredientes (idPlato, idIngrediente, cantidad_necesaria) VALUES
+(1, 1, 0.20),
+(2, 2, 0.05),
+(3, 3, 0.50),
+(4, 4, 4.00),
+(5, 5, 0.30),
+(6, 6, 0.01),
+(7, 7, 2.00),
+(8, 8, 0.25),
+(9, 9, 0.15),
+(10, 10, 1.00),
+(11, 11, 1.50),
+(12, 12, 0.20),
+(13, 13, 0.05),
+(14, 14, 0.25),
+(15, 15, 0.10);
+
+-- Insertar datos en la tabla RECETAS
+INSERT INTO Recetas (idPlato, pasos, tiempo_preparacion, dificultad) VALUES
+(1, 'Paso 1: Mezclar ingredientes secos. Paso 2: Añadir leche y huevos. Paso 3: Cocinar.', 30, 'Fácil'),
+(2, 'Paso 1: Hervir pollo. Paso 2: Añadir vegetales. Paso 3: Cocinar a fuego lento.', 45, 'Media'),
+(3, 'Paso 1: Amasar la masa. Paso 2: Añadir salsa y queso. Paso 3: Hornear.', 60, 'Difícil'),
+(4, 'Paso 1: Cocer la pasta. Paso 2: Preparar la salsa. Paso 3: Mezclar y servir.', 25, 'Fácil'),
+(5, 'Paso 1: Mezclar ingredientes para la tarta. Paso 2: Hornear.', 90, 'Media'),
+(6, 'Paso 1: Preparar el café. Paso 2: Servir caliente.', 10, 'Fácil'),
+(7, 'Paso 1: Sazonar carne. Paso 2: Asar a la parrilla. Paso 3: Servir.', 35, 'Media'),
+(8, 'Paso 1: Preparar masa. Paso 2: Añadir relleno. Paso 3: Hornear.', 120, 'Difícil'),
+(9, 'Paso 1: Cortar vegetales. Paso 2: Preparar aderezo. Paso 3: Mezclar y servir.', 15, 'Fácil'),
+(10, 'Paso 1: Hervir tomate. Paso 2: Hacer puré. Paso 3: Cocinar.', 40, 'Media'),
+(11, 'Paso 1: Amasar masa. Paso 2: Añadir ingredientes. Paso 3: Hornear.', 70, 'Difícil'),
+(12, 'Paso 1: Cocer pasta. Paso 2: Preparar salsa. Paso 3: Mezclar y servir.', 30, 'Media'),
+(13, 'Paso 1: Preparar ingredientes. Paso 2: Mezclar. Paso 3: Congelar.', 50, 'Media'),
+(14, 'Paso 1: Hervir agua. Paso 2: Preparar té. Paso 3: Enfriar y servir.', 20, 'Fácil'),
+(15, 'Paso 1: Sazonar pollo. Paso 2: Asar a la parrilla. Paso 3: Servir.', 45, 'Media');
+
+-- Insertar datos en la tabla CLIENTES_FIDELIZACION
+INSERT INTO Clientes_Fidelizacion (idCliente, puntos_acumulados, nivel, fecha_ultima_visita) VALUES
+(1, 100, 'Plata', '2023-07-01'),
+(2, 200, 'Oro', '2023-06-25'),
+(3, 50, 'Bronce', '2023-07-10'),
+(4, 300, 'Platino', '2023-06-20'),
+(5, 150, 'Plata', '2023-07-05'),
+(6, 220, 'Oro', '2023-06-30'),
+(7, 80, 'Bronce', '2023-07-08'),
+(8, 270, 'Platino', '2023-06-22'),
+(9, 110, 'Plata', '2023-07-02'),
+(10, 240, 'Oro', '2023-06-27'),
+(11, 60, 'Bronce', '2023-07-09'),
+(12, 310, 'Platino', '2023-06-21'),
+(13, 120, 'Plata', '2023-07-03'),
+(14, 260, 'Oro', '2023-06-26'),
+(15, 90, 'Bronce', '2023-07-07');
+
+
