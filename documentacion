@@ -204,6 +204,49 @@ Es importante asegurarse de que las fechas proporcionadas sean válidas y que el
 Esta función proporciona una herramienta valiosa para el análisis financiero y la toma de decisiones en la gestión del buffet,
 permitiendo un seguimiento detallado de los ingresos por categoría de platos.
 
+Función: ObtenerPrecioPlato
+Descripción:
+Esta función se utiliza para obtener el precio de un plato específico de una tabla llamada Platos.
+Toma como parámetro el identificador del plato (idPlato) y devuelve su precio como un valor decimal con precisión de dos dígitos decimales.
+
+DELIMITER $$
+
+Cambia el delimitador de comandos por defecto (;) a $$ para que el bloque de código
+de la función pueda incluir varios comandos sin ser interrumpido.
+CREATE FUNCTION ObtenerPrecioPlato(idPlato INT)
+
+Declara la creación de una nueva función llamada ObtenerPrecioPlato.
+idPlato INT es el parámetro de entrada, el cual representa el identificador del plato.
+RETURNS DECIMAL(10, 2)
+
+Especifica el tipo de dato que la función devolverá.
+En este caso, DECIMAL(10, 2) significa que el valor devuelto será un número decimal con hasta 10 dígitos en total, 
+de los cuales 2 serán decimales.
+DETERMINISTIC
+
+Indica que la función siempre devolverá el mismo resultado para el mismo conjunto de valores de entrada,
+sin importar cuántas veces se ejecute.
+BEGIN ... END
+
+Define el inicio y el final del bloque de código de la función.
+DECLARE Precio DECIMAL(10, 2) DEFAULT 0;
+
+Declara una variable local llamada Precio de tipo DECIMAL(10, 2), inicializada en 0.
+Esta variable se utilizará para almacenar el precio del plato recuperado.
+SELECT p.precio INTO Precio FROM Platos p WHERE p.idPlato = idPlato;
+
+Realiza una consulta a la tabla Platos para seleccionar el valor de la columna precio y almacenarlo en la variable Precio.
+La consulta filtra los resultados usando idPlato como criterio.
+RETURN Precio;
+
+Devuelve el valor almacenado en la variable Precio como resultado de la función.
+DELIMITER ;
+
+Restaura el delimitador de comandos por defecto (;).
+Uso
+Puedes llamar a esta función en tus consultas SQL de la siguiente manera:
+SELECT ObtenerPrecioPlato(1);
+Este ejemplo devuelve el precio del plato con idPlato igual a 1.
 
 2.4 Procedimientos Almacenados:
 Nombre del Procedimiento: AgregarCliente
