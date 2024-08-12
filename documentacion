@@ -305,6 +305,15 @@ Beneficios:
 
 Este procedimiento almacenado es una herramienta valiosa para la gestión eficiente de la base de clientes del buffet, 
 contribuyendo a una mejor organización y servicio al cliente.
+stored procedure: agregarplato
+Explicación:
+IN nombrePlato: El nombre del plato a agregar.
+IN descripcionPlato: La descripción del plato.
+IN precioPlato: El precio del plato.
+IN idCategoriaPlato: El ID de la categoría del plato (debe corresponder a una categoría existente en la tabla Categorias).
+Este procedimiento se puede llamar con los valores necesarios para agregar un nuevo plato a la base de datos. 
+Por ejemplo:
+             CALL AgregarPlato('Tacos al Pastor', 'Tacos con carne de cerdo marinada, piña y salsa', 9.50, 7);
 
 
 2.5 Triggers:
