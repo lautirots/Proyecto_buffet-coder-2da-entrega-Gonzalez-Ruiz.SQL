@@ -482,6 +482,36 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+
+CREATE PROCEDURE AgregarPlato(
+    IN nombrePlato VARCHAR(100),
+    IN descripcionPlato TEXT,
+    IN precioPlato DECIMAL(10, 2),
+    IN idCategoriaPlato INT
+)
+BEGIN
+    -- Insertar el nuevo plato en la tabla Platos
+    INSERT INTO Platos (nombre, descripcion, precio, idCategoria)
+    VALUES (nombrePlato, descripcionPlato, precioPlato, idCategoriaPlato);
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER ActualizarFechaUltimaVisita
+AFTER INSERT ON Pedidos
+FOR EACH ROW
+BEGIN
+    -- Actualizar la fecha de la última visita del cliente
+    UPDATE Clientes_Fidelizacion
+    SET fecha_ultima_visita = NEW.fecha
+    WHERE idCliente = NEW.id_cliente;
+END$$
+
+DELIMITER ;
+
 
 
 
