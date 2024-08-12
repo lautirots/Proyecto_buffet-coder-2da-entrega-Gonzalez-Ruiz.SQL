@@ -18,6 +18,10 @@ Inventarios
 Mesas
 Reservaciones
 Promociones
+Ingredientes
+Plato_Ingredientes
+Recetas
+Clientes_Fidelizacion
 
 2.2 Vistas:
 vistapedidos
