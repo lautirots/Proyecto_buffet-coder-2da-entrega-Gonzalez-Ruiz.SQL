@@ -17,3 +17,24 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--levantamos un procedimiento,
+--el cual nos permitira agregar de manera mas facil la insercion de nuevos platos,
+--(Tablas manpiludas: "platos")
+
+DELIMITER $$
+
+CREATE PROCEDURE AgregarPlato(
+    IN nombrePlato VARCHAR(100),
+    IN descripcionPlato TEXT,
+    IN precioPlato DECIMAL(10, 2),
+    IN idCategoriaPlato INT
+)
+BEGIN
+    -- Insertar el nuevo plato en la tabla Platos
+    INSERT INTO Platos (nombre, descripcion, precio, idCategoria)
+    VALUES (nombrePlato, descripcionPlato, precioPlato, idCategoriaPlato);
+END$$
+
+DELIMITER ;
+
