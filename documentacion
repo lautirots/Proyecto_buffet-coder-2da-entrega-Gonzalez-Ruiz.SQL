@@ -372,6 +372,57 @@ Beneficios:
 Este trigger es una herramienta esencial para mantener la integridad entre los pedidos realizados y el inventario disponible
 en el buffet, contribuyendo significativamente a una gestión más eficiente y precisa del negocio.
 
+ActualizarFechaUltimaVisita
+1. Descripción General:
+El trigger ActualizarFechaUltimaVisita está diseñado para actualizar la fecha de la última visita de un cliente
+en la tabla Clientes_Fidelizacion cada vez que se inserta un nuevo pedido en la tabla Pedidos. 
+Esto garantiza que la información sobre la última visita de un cliente esté siempre actualizada.
+DELIMITER $$
+
+Cambia el delimitador de comandos temporalmente de ; a $$ 
+para que el trigger pueda ser definido como una única unidad sin ser interrumpido por otros comandos SQL que terminan en ;.
+CREATE TRIGGER ActualizarFechaUltimaVisita
+
+Define el nombre del trigger. En este caso, el trigger se llama ActualizarFechaUltimaVisita.
+AFTER INSERT ON Pedidos
+
+Especifica que el trigger se ejecutará después de que se inserte una nueva fila en la tabla Pedidos.
+FOR EACH ROW
+
+Indica que el trigger se ejecutará para cada fila afectada por la operación de inserción.
+BEGIN ... END
+
+Delimita el bloque de código que se ejecutará cuando se dispare el trigger.
+UPDATE Clientes_Fidelizacion
+
+Realiza una actualización en la tabla Clientes_Fidelizacion.
+SET fecha_ultima_visita = NEW.fecha
+
+Establece el campo fecha_ultima_visita en Clientes_Fidelizacion al valor de NEW.fecha, que es la fecha del nuevo pedido.
+WHERE idCliente = NEW.id_cliente
+
+Especifica la condición para la actualización: 
+solo se actualizará la fila en Clientes_Fidelizacion donde idCliente coincida con NEW.id_cliente,
+que es el identificador del cliente del nuevo pedido.
+DELIMITER ;
+
+Restablece el delimitador de comandos a ;.
+4. Funcionamiento del Trigger
+Evento que Desencadena el Trigger:
+
+Cada vez que se inserta una nueva fila en la tabla Pedidos, se activa el trigger ActualizarFechaUltimaVisita.
+Acción Realizada:
+
+El trigger actualiza el campo fecha_ultima_visita en la tabla Clientes_Fidelizacion con el valor de la fecha del nuevo pedido (NEW.fecha).
+Condición de Aplicación:
+
+La actualización se realiza únicamente para el cliente correspondiente al nuevo pedido (idCliente = NEW.id_cliente).
+5. Ejemplo de Uso
+Supongamos que se inserta un nuevo pedido con id_cliente
+igual a 5 y la fecha del pedido es 2024-08-12.
+Después de la inserción en la tabla Pedidos, 
+el trigger actualizará la tabla Clientes_Fidelizacion para establecer fecha_ultima_visita del cliente
+con idCliente 5 a 2024-08-12.
 
 
 3.0 Descripción Detallada de las Tablas
