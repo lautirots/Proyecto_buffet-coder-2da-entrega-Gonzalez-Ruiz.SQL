@@ -36,3 +36,52 @@ JOIN
     Mesas m ON r.idMesa = m.idMesa;
     
     SET GLOBAL log_bin_trust_function_creators = 1;
+
+--Esta vista te permite ver qué ingredientes se necesitan para cada plato junto con la cantidad requerida.
+    
+CREATE VIEW Vista_Platos_Ingredientes AS
+SELECT 
+    p.nombre AS Plato,
+    i.nombre AS Ingrediente,
+    pi.cantidad_necesaria AS Cantidad_Necesaria,
+    i.unidad_medida AS Unidad
+FROM 
+    Platos p
+JOIN 
+    Plato_Ingredientes pi ON p.idPlato = pi.idPlato
+JOIN 
+    Ingredientes i ON pi.idIngrediente = i.idIngrediente;
+
+--Esta vista muestra la receta de cada plato con sus pasos, tiempo de preparación y dificultad.
+
+    CREATE VIEW Vista_Recetas_Detalladas AS
+SELECT 
+    p.nombre AS Plato,
+    r.pasos AS Pasos,
+    r.tiempo_preparacion AS Tiempo_Preparacion,
+    r.dificultad AS Dificultad
+FROM 
+    Recetas r
+JOIN 
+    Platos p ON r.idPlato = p.idPlato;
+
+--Lista todos los platos junto con su descripción, precio y la categoría a la que pertenecen.
+CREATE VIEW Vista_Platos_Categorias AS
+SELECT 
+    c.nombre AS Categoria,
+    p.nombre AS Nombre_Plato,
+    p.descripcion AS Descripcion_Plato,
+    p.precio AS Precio_Plato
+FROM 
+    Platos p
+JOIN 
+    Categorias c ON p.idCategoria = c.idCategoria
+ORDER BY 
+    c.nombre, p.nombre;
+
+
+
+
+
+
+
