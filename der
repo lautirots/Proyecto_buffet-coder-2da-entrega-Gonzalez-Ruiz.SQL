@@ -17,34 +17,45 @@
 | salario          |       +------------------+       | idCategoria (fk)  |
 +------------------+                                 +-------------------+
 
-+-----------------------+       +------------------+
-|      INVENTARIOS      |       |    PROVEEDORES   |
-+-----------------------+       +------------------+
-| idInventario (PK)     |       | idProveedor (PK) |
-| idPlato (fk)          |-------| nombre           |
-| cantidad              | 1 a 1 | telefono         |
-| fecha_actualizacion   |       | email            |
-+-----------------------+       | direccion        |
-                                +------------------+
-
-+------------------+       +-----------------------+
-|       MESAS      |       |    RESERVACIONES      |
-+------------------+       +-----------------------+
-| idMesa (PK)      |       | idReservacion (PK)    |
-| numero_mesa      | 1 a * | idCliente (fk)        |
-| capacidad        |<>-----| idMesa (fk)           |
-| ubicacion        |       | fecha_reservacion     |
-+------------------+       | hora_reservacion      |
++-----------------------+       +------------------+       +-------------------+
+|      INVENTARIOS      |       |    PROVEEDORES   |       |   INGREDIENTES    |
++-----------------------+       +------------------+       +-------------------+
+| idInventario (PK)     |       | idProveedor (PK) |       | idIngrediente (PK)|
+| idPlato (fk)          |-------| nombre           |       | nombre            |
+| cantidad              | 1 a 1 | telefono         | 1 a * | descripcion       |
+| fecha_actualizacion   |       | email            |       | cantidad_disponible|
++-----------------------+       | direccion        |       | unidad_medida     |
+                                +------------------+       +-------------------+
+                                                                  
++------------------+       +-----------------------+       +--------------------+
+|       MESAS      |       |    RESERVACIONES      |       |PLATO_INGREDIENTES  |
++------------------+       +-----------------------+       +--------------------+
+| idMesa (PK)      |       | idReservacion (PK)    |       | idPlatoIngrediente (PK)|
+| numero_mesa      | 1 a * | idCliente (fk)        |-------| idPlato (fk)        |
+| capacidad        |<>-----| idMesa (fk)           | 1 a * | idIngrediente (fk)  |
+| ubicacion        |       | fecha_reservacion     |       | cantidad_necesaria  |
++------------------+       | hora_reservacion      |       +--------------------+
                            | numero_personas       |
                            +-----------------------+
-
-+-----------------------+  
-|    PROMOCIONES        |  
-+-----------------------+  
-| idPromocion (PK)      |  
-| nombre                |  
-| descripcion           |  
-| descuento             |  
-| fecha_inicio          |  
-| fecha_fin             |  
+                            
++-----------------------+       +------------------+
+|    PROMOCIONES        |       |  CLIENTES_FIDELIZACION|
++-----------------------+       +------------------+
+| idPromocion (PK)      |       | idFidelizacion (PK)|
+| nombre                |       | idCliente (fk)     |
+| descripcion           |       | puntos_acumulados  |
+| descuento             |       | nivel              |
+| fecha_inicio          |       | fecha_ultima_visita|
+| fecha_fin             |       +------------------+
 +-----------------------+
+
++-----------------------+
+|       RECETAS         |
++-----------------------+
+| idReceta (PK)         |
+| idPlato (fk)          |
+| pasos                 |
+| tiempo_preparacion    |
+| dificultad            |
++-----------------------+
+|
