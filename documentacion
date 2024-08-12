@@ -482,7 +482,22 @@ Campos: idReservacion (PK), idCliente (FK), idMesa (FK), fecha_reservacion, hora
 Maneja las promociones ofrecidas por el restaurante.
 Campos: idPromocion (PK), nombre, descripcion, descuento, fecha_inicio, fecha_fin.
 
+3.12 ingredientes:
+almacena información sobre los ingredientes utilizados en diferentes recetas o productos en el sistema. 
+Permite la gestión y seguimiento de los ingredientes disponibles y sus características.
 
+3.13 plato_ingredientes:
+gestiona la relación entre los platos y los ingredientes que se utilizan para prepararlos. 
+Permite registrar qué ingredientes son necesarios para cada plato y en qué cantidad.
+
+3.14 recetas:
+almacena información sobre las recetas de los platos ofrecidos en el buffet.
+Contiene detalles sobre cómo preparar cada plato, incluyendo los pasos de la receta,
+el tiempo de preparación y el nivel de dificultad.
+
+3.15 Clientes_Fidelizacion:
+almacena información sobre el programa de fidelización de clientes.
+Registra los puntos acumulados por los clientes, su nivel en el programa de fidelización y la fecha de su última visita.
 
 Seguridad
 
