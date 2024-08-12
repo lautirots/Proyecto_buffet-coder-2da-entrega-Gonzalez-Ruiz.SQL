@@ -465,5 +465,23 @@ JOIN
 ORDER BY 
     c.nombre, p.nombre;
 
+DELIMITER $$
+
+CREATE FUNCTION ObtenerPrecioPlato(idPlato INT)
+RETURNS DECIMAL(10, 2)
+DETERMINISTIC
+BEGIN
+    DECLARE Precio DECIMAL(10, 2) DEFAULT 0;
+    
+    SELECT p.precio INTO Precio
+    FROM Platos p
+    WHERE p.idPlato = idPlato;
+
+    RETURN Precio;
+END$$
+
+DELIMITER ;
+
+
 
 
